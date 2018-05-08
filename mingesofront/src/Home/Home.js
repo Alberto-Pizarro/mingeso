@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Home.css';
 
 class Home extends Component {
   login() {
@@ -15,10 +16,16 @@ class Home extends Component {
                 Bienvenido a MINGESO-APP
               </h4>
               <label>CODE</label>
-               <div class="form-group">
-               
-               <textarea class="form-control" rows="15" id="comment"></textarea>
-             </div> 
+              <div class="code-group">
+                <label class="radio-inline"><input type="radio" name="optradio"></input>Python</label>
+                <textarea class="form-control" rows="15" id="code"></textarea>                
+              </div>
+              <label>INPUT</label>
+                <textarea class="form-control" rows="1" id="input"></textarea>
+              <label>OUTPUT</label>
+                <textarea class="form-control" rows="1" id="output"></textarea>
+              <label>ERROR</label>
+                <textarea class="form-control" rows="1" id="error "></textarea> 
              </div> 
             )
         }

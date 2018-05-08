@@ -1,4 +1,4 @@
-textarea{
+.form-control{
     overflow: auto;
     display: block;
     width: 100%;
@@ -17,6 +17,52 @@ textarea{
     -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
     transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s; 
 }
+
+
+fieldset[disabled] input[type="checkbox"], fieldset[disabled] input[type="radio"], input[type="checkbox"].disabled, input[type="checkbox"][disabled], input[type="radio"].disabled, input[type="radio"][disabled] {
+    cursor: not-allowed;
+}
+fieldset[disabled] input[type="radio-inline"], input[type="radio-inline"].disabled, input[type="radio-inline"][disabled] {
+    cursor: not-allowed;
+}
+
+button[disabled], html input[disabled] {
+    cursor: default;
+}
+
+.checkbox.disabled label, .radio.disabled label, fieldset[disabled] .checkbox label, fieldset[disabled] .radio label {
+    cursor: not-allowed;
+}
+
+.radio-inline{
+    margin-bottom: 4px;
+}
 disabled{
     cursor: not-allowed;
+}
+
+btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+    border-radius: 4px;
 }

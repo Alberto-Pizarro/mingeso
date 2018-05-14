@@ -40,28 +40,33 @@ handleErrorValue(event){
 
 
   handleOnClick = event =>{
-    console.log(event)
+    //console.log(event)
     
-    Axios.post('https://run.glot.io/languages/python/latest',{
-      headers:{
-        'Authorization':"Token 173b8b87-2bf3-4364-8936-c46ef85d7841",
-        'Content-Type':"application/json"
+    Axios.post('https://run.glot.io/languages/python/latest ',{
+      tdin: this.state.inputValue,
+      files:  [
+      {
+        name: "main.py",
+        content: this.state.codeValue
+      }
+            ]
       },
-      stdin: this.state.inputValue,
-      files: [
-        {
-          'name': "main.py",
-          'content': this.state.codeValue
-        }
-      ]
+      {
+      headers:{ 
+        'Authorization': 'Token 173b8b87-2bf3-4364-8936-c46ef85d7841',        
+        'Postman-Token': '349ec7cd-af33-4c96-9175-1426ccf786ce',
+        'Cache-Control': 'no-cache',
+        'Content-Type': 'application/json'
+      },
+      json: true
     }).then(function (response) {
         console.log(response);
 
       }).catch(function (error) {
         console.log(error);
       }).then(
-        this.setState({inputValue: ''}),
-        this.setState({outputValue: ''}),
+        //this.setState({inputValue: ''}),
+        //this.setState({outputValue: ''}),
         this.setState({errorValue: ''})
       ).then(
         this.props.onClose
@@ -76,9 +81,11 @@ handleErrorValue(event){
       <div className="container">
         {
           isAuthenticated() && (
+
+            
             
               <div>
-                <h4>
+<h4>
                   Bienvenido a MINGESO-APP
                 </h4>
 
@@ -89,7 +96,8 @@ handleErrorValue(event){
                   <label className="radio-inline disabled"><input type="radio" disabled="" name="optradio"></input>C</label>
                   <textarea className="form-control" rows="15" id="code"></textarea>                
                 </div>
-
+                         
+                
                 <label>INPUT</label>
                   <textarea className="form-control" rows="1" id="input" value={this.state.inputValue} onChange={this.handleInputValue}></textarea>
                 <label>OUTPUT</label>
@@ -97,6 +105,8 @@ handleErrorValue(event){
                 <label>ERROR</label>
                   <textarea className="form-control" rows="1" id="error" value={this.state.errorValue} onChange={this.handleErrorValue} ></textarea> 
                 <button className="btn btn-success btn-lg" onClick={this.handleOnClick} id="send-button"> SEND </button>
+
+
               </div>
             
             )

@@ -23,7 +23,7 @@ class App extends Component {
         <Navbar fluid>
           <Navbar.Header>
             <Navbar.Brand>
-              <a href="#">MINGESO-APP</a>
+              <a className="title" href="#">MINGESO-APP</a>
             </Navbar.Brand>
             <Button
               bsStyle="primary"

@@ -85,15 +85,20 @@ handleErrorValue(event){
             
             
               <div>
-<h4>
+                <h4>
                   Bienvenido a MINGESO-APP
                 </h4>
 
                 <label>CODE</label>
                 <div className="code-group">
-                  <label className="radio-inline disabled"><input type="radio" disabled="" name="optradio"></input>Python</label>
-                  <label className="radio-inline disabled"><input type="radio" disabled="" name="optradio"></input>Java</label>
-                  <label className="radio-inline disabled"><input type="radio" disabled="" name="optradio"></input>C</label>
+                <div class="form-group">
+                    <label for="sel1">Seleccione lenguaje:</label>
+                    <select class="form-control" id="sel1">
+                      <option>Python</option>
+                      <option>C</option>
+                      <option>Java</option>                      
+                    </select>
+                  </div> 
                   <textarea className="form-control" rows="15" id="code"></textarea>                
                 </div>
                          

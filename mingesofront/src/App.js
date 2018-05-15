@@ -46,6 +46,7 @@ class App extends Component {
             }
             {
               isAuthenticated() && (
+                <div>
                   <Button
                     id="qsLogoutBtn"
                     bsStyle="primary"
@@ -54,7 +55,14 @@ class App extends Component {
                   >
                     Log Out
                   </Button>
-                  
+                  <Button
+                  bsStyle="primary"
+                  className="btn-margin"
+                  onClick={this.goTo.bind(this, 'Profe')}
+                >
+                  Prof
+                </Button>
+                </div>
                 )
             }
           </Navbar.Header>

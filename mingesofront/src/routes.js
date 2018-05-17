@@ -9,6 +9,10 @@ import Dashboard from './Profe/Dashboard'
 import Enunciado from './Profe/Enunciado'
 import Editar from './Profe/Editar'
 import Cursos from './Profe/Cursos'
+import Index from './Estudiante/Dashboard'
+import Problema from './Estudiante/Problema'
+import Consulta from './Estudiante/Consulta'
+import Resultados from './Estudiante/Resultados'
 
 
 const auth = new Auth();
@@ -29,6 +33,12 @@ export const makeMainRoutes = () => {
           <Route path="/Dashboard/Enunciado" render={(props) => <Enunciado auth={auth} {...props} />} />
           <Route path="/Dashboard/Edicion" render={(props) => <Editar auth={auth} {...props} />} />
           <Route path="/Dashboard/Cursos" render={(props) => <Cursos auth={auth} {...props} />} />
+
+          <Route path="/Index" render={(props) => <Index auth={auth} {...props} />} />
+          <Route path="/Index/Problema" render={(props) => <Problema auth={auth} {...props} />} />
+          <Route path="/Index/Consulta" render={(props) => <Consulta auth={auth} {...props} />} />
+          <Route path="/Index/Resultados" render={(props) => <Resultados auth={auth} {...props} />} />
+
           <Route path="/callback" render={(props) => {
             handleAuthentication(props);
             return <Callback {...props} /> 

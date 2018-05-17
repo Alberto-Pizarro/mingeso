@@ -54,9 +54,9 @@ class App extends Component {
                 <Button
                   bsStyle="primary"
                   className="btn-margin"
-                  onClick={this.goTo.bind(this, 'home')}
+                  onClick={this.goTo.bind(this, 'Index')}
                 >
-                  Home
+                  Inicio
                 </Button>
                   <Button
                     id="qsLogoutBtn"

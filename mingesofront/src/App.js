@@ -25,15 +25,18 @@ class App extends Component {
             <Navbar.Brand>
               <a className="title" href="#">MINGESO-APP</a>
             </Navbar.Brand>
-            <Button
-              bsStyle="primary"
-              className="btn-margin"
-              onClick={this.goTo.bind(this, 'home')}
-            >
-              Home
-            </Button>
+
             {
               !isAuthenticated() && (
+                <div className="btn-group">
+
+                <Button
+                bsStyle="primary"
+                className="btn-margin"
+                onClick={this.goTo.bind(this, 'home')}
+              >
+                Home
+              </Button>
                   <Button
                     id="qsLoginBtn"
                     bsStyle="primary"
@@ -42,11 +45,19 @@ class App extends Component {
                   >
                     Log In
                   </Button>
+                  </div>
                 )
             }
             {
               isAuthenticated() && (
-                <div>
+                <div className="btn-group">
+                <Button
+                  bsStyle="primary"
+                  className="btn-margin"
+                  onClick={this.goTo.bind(this, 'home')}
+                >
+                  Home
+                </Button>
                   <Button
                     id="qsLogoutBtn"
                     bsStyle="primary"
@@ -58,7 +69,7 @@ class App extends Component {
                   <Button
                   bsStyle="primary"
                   className="btn-margin"
-                  onClick={this.goTo.bind(this, 'Profe')}
+                  onClick={this.goTo.bind(this, 'Dashboard')}
                 >
                   Prof
                 </Button>

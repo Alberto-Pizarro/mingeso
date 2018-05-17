@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
-import './Home.css';
 import Axios from 'axios';
+import './Dashboard.css';
+import textlogo from '../Img/text-icon.png';
+import gradelogo from '../Img/good-result.png';
+import editlogo from '../Img/magnifying-glass.png';
 
-class Home extends Component {
+
+class Dashboard extends Component {
 
   constructor (props){
     super(props);
@@ -74,46 +78,61 @@ handleErrorValue(event){
 }
 
 
+goTo(route) {
+  this.props.history.replace(`/${route}`)
+}
+
 
   render() {
     const { isAuthenticated } = this.props.auth;
     return (
-      <div className="container ">
+      <div className="container">
         {
           isAuthenticated() && (
 
             
             
-              <div>
+              <div >
                 <h4 className="well">
-                  Bienvenido a MINGESO-APP
+                  Bienvenido docente a MINGESO-APP
                 </h4>
-              <div className="well">
-                <label>CODE</label>
-                <div className="code-group">
-                <div className="form-group">
-                    <label >Seleccione lenguaje:</label>
-                    <select className="form-control" id="sel1">
-                      <option>Python</option>
-                      <option>C</option>
-                      <option>Java</option>                      
-                    </select>
-                  </div> 
-                  <textarea className="form-control" rows="15" id="code"></textarea>                
+                <div className="col-md-4 mt-4 well">
+    		    <div className="card profile-card-5">
+    		        <div className="card-img-block">
+    		            <img className="card-img-top" height="150px" src={textlogo} alt="textlogo" onClick={this.goTo.bind(this, 'Dashboard/Enunciado')}></img>
+    		        </div>
+                    <div className="card-body pt-0">
+                    <h5 className="card-title">Añadir enunciado</h5>
+                    <p className="card-text">Agregar nuevo problema a resolver, con enunciado, entradas esperadas y resultados esperados.</p>
+                  </div>
                 </div>
-                         
-                
-                <label>INPUT</label>
-                  <textarea className="form-control" rows="1" id="input" value={this.state.inputValue} onChange={this.handleInputValue}></textarea>
-                <label>OUTPUT</label>
-                  <textarea className="form-control" rows="1" id="output" value={this.state.outputValue} onChange={this.handleOutputValue} ></textarea>
-                <label>ERROR</label>
-                  <textarea className="form-control" rows="1" id="error" value={this.state.errorValue} onChange={this.handleErrorValue} ></textarea> 
-                <button className="btn btn-success btn-lg" onClick={this.handleOnClick} id="send-button"> SEND </button>
+    		</div>
 
+        <div className="col-md-4 mt-4 well">
+    		    <div className="card profile-card-5">
+    		        <div className="card-img-block">
+    		            <img className="card-img-top" height="150px" src={editlogo} alt="editlogo" onClick={this.goTo.bind(this, 'Dashboard/Edicion')}></img>
+    		        </div>
+                    <div className="card-body pt-0">
+                    <h5 className="card-title"> Editar enunciado </h5>
+                    <p className="card-text">Modificar enunciado o añadir nuevas posbiles entradas y salidas.</p>
+                  </div>
+                </div>
+    		</div>
+
+                      
+        <div className="col-md-4 mt-4 well">
+    		    <div className="card profile-card-5">
+    		        <div className="card-img-block">
+    		            <img className="card-img-top" height="150px" src={gradelogo} alt="gradelogo" onClick={this.goTo.bind(this, 'Dashboard/Cursos')} ></img>
+    		        </div>
+                    <div className="card-body pt-0">
+                    <h5 className="card-title"> Revisar desempeño </h5>
+                    <p className="card-text">Comprobar desempeño del curso, cantidad de problemas resueltos, logrados, etc.</p>
+                  </div>
+                </div>
+    		</div>        
               </div>
-              </div>
-            
             )
         }
         {
@@ -135,4 +154,4 @@ handleErrorValue(event){
   }
 }
 
-export default Home;
+export default Dashboard;

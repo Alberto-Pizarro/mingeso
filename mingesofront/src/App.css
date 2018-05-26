@@ -16,3 +16,15 @@
   border-bottom: 2px solid rgb(139, 139, 139);
   border-radius: 4px;
 }
+
+.text-force-right{
+
+  /*position: relative;
+  text-align: center;*/
+  color: #474747;
+  font-size: 110%;
+  font-weight: 600;
+  float: right;
+  margin-top: 1%;
+}
+

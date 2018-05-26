@@ -64,7 +64,7 @@ class Enunciado extends Component {
                 <label>Salida esperada</label>
                   <textarea className="form-control" rows="3" id="output" value={this.state.salidaValue} onChange={this.handleSalidaValue} ></textarea>
                 
-                  <button className="btn btn-success" onClick={this.handleOnSendTest} id="send-Test"> Enviar test </button>
+                  <button className="btn btn-success btn-margin" onClick={this.handleOnSendTest} id="send-Test"> Enviar test </button>
 
               </div>
             

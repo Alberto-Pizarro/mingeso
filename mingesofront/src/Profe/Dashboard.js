@@ -83,19 +83,20 @@ goTo(route) {
 }
 
 
-  render() {
-    const { isAuthenticated } = this.props.auth;
-    return (
-      <div className="container">
-        {
-          isAuthenticated() && (
+render() {
+  const { isAuthenticated } = this.props.auth;
+  var nombreValue = localStorage.getItem("name")
+  return (
+    <div className="container">
+      {
+        isAuthenticated() && (
 
-            
-            
-              <div >
-                <h4 className="well">
-                  Bienvenido docente a MINGESO-APP
-                </h4>
+          
+          
+            <div >
+              <h4 className="well">
+                Bienvenido prof. {nombreValue} a MINGESO-APP
+              </h4>
                 <div className="col-md-4 mt-4 well">
     		    <div className="card profile-card-5">
     		        <div className="card-img-block">

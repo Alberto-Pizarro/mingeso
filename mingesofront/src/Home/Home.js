@@ -84,49 +84,28 @@ handleErrorValue(event){
 
             
             
-              <div>
-                <h4 className="well">
+              <div className="text-center well">
+                <h4>
                   Bienvenido a MINGESO-APP
                 </h4>
-              <div className="well">
-                <label>CODE</label>
-                <div className="code-group">
-                <div className="form-group">
-                    <label >Seleccione lenguaje:</label>
-                    <select className="form-control" id="sel1">
-                      <option>Python</option>
-                      <option>C</option>
-                      <option>Java</option>                      
-                    </select>
-                  </div> 
-                  <textarea className="form-control" rows="15" id="code"></textarea>                
-                </div>
-                         
-                
-                <label>INPUT</label>
-                  <textarea className="form-control" rows="1" id="input" value={this.state.inputValue} onChange={this.handleInputValue}></textarea>
-                <label>OUTPUT</label>
-                  <textarea className="form-control" rows="1" id="output" value={this.state.outputValue} onChange={this.handleOutputValue} ></textarea>
-                <label>ERROR</label>
-                  <textarea className="form-control" rows="1" id="error" value={this.state.errorValue} onChange={this.handleErrorValue} ></textarea> 
-                <button className="btn btn-success btn-lg" onClick={this.handleOnClick} id="send-button"> SEND </button>
-
+                Ud no debería andar intruseando :o
+                <div>
+                Mejor haga clic en los botones de arriba
               </div>
               </div>
-            
             )
         }
         {
           !isAuthenticated() && (
-              <h4>
-                You are not logged in! Please{' '}
+              <h4 className={"text-center lead"} >
+                Usted no ha ingresado al sistema. Favor {' '}
                 <a
                   style={{ cursor: 'pointer' }}
                   onClick={this.login.bind(this)}
                 >
-                  Log In
+                  conectarse
                 </a>
-                {' '}to continue.
+                {' '}para continuar.
               </h4>
             )
         }

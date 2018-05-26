@@ -15,7 +15,7 @@ class Dashboard extends Component {
       codigoValue: "",
       inputValue:"",
       outputValue:"",
-      errorValue:""
+      errorValue:"",
   };
 
   this.handleCodigoValue = this.handleCodigoValue.bind(this);
@@ -85,6 +85,7 @@ goTo(route) {
 
   render() {
     const { isAuthenticated } = this.props.auth;
+    var nombreValue = localStorage.getItem("name")
     return (
       <div className="container">
         {
@@ -94,7 +95,7 @@ goTo(route) {
             
               <div >
                 <h4 className="well">
-                  Bienvenido a MINGESO-APP
+                  Bienvenido {nombreValue} a MINGESO-APP
                 </h4>
                 <div className="col-md-4 mt-4 well" >
     		    <div className="card profile-card-5">

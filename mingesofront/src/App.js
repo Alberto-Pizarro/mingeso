@@ -17,7 +17,7 @@ class App extends Component {
 
   render() {
     const { isAuthenticated } = this.props.auth;
-
+    var userMailValue = localStorage.getItem("user_mail");
     return (
       <div>
         <Navbar fluid>
@@ -73,10 +73,14 @@ class App extends Component {
                 >
                   Prof
                 </Button>
+
+
                 </div>
                 )
             }
           </Navbar.Header>
+          <Navbar.Link className="text-force-right"> {userMailValue} </Navbar.Link>      
+
         </Navbar>
       </div>
       

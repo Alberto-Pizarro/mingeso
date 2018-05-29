@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Panel } from 'react-bootstrap';
+
 import './Dashboard.css';
 //import Axios from 'axios';
 
@@ -44,7 +46,7 @@ class Editar extends Component {
   render() {
     const { isAuthenticated } = this.props.auth;
     return (
-      <div className="container">
+      <Panel className="container">
         {
           isAuthenticated() && (
 
@@ -85,7 +87,7 @@ class Editar extends Component {
               </h4>
             )
         }
-      </div>
+      </Panel>
     );
   }
 }

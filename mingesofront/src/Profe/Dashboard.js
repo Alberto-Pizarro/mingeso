@@ -4,6 +4,8 @@ import './Dashboard.css';
 import textlogo from '../Img/text-icon.png';
 import gradelogo from '../Img/good-result.png';
 import editlogo from '../Img/magnifying-glass.png';
+import { Panel } from 'react-bootstrap';
+
 
 
 class Dashboard extends Component {
@@ -87,7 +89,7 @@ render() {
   const { isAuthenticated } = this.props.auth;
   var nombreValue = localStorage.getItem("name")
   return (
-    <div className="container">
+    <Panel className="container bot-panel">
       {
         isAuthenticated() && (
 
@@ -150,7 +152,7 @@ render() {
               </h4>
             )
         }
-      </div>
+      </Panel>
     );
   }
 }

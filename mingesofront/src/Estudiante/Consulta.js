@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Panel } from 'react-bootstrap';
 //import Axios from 'axios';
 
 class Resultados extends Component {
@@ -30,7 +31,7 @@ class Resultados extends Component {
   render() {
     const { isAuthenticated } = this.props.auth;
     return (
-      <div className="container">
+      <Panel className="container">
         {
           isAuthenticated() && (
 
@@ -65,7 +66,7 @@ class Resultados extends Component {
             </h4>
           )
         }
-      </div>
+      </Panel>
     );
   }
 }

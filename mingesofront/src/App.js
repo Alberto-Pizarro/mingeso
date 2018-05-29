@@ -16,6 +16,7 @@ class App extends Component {
   }
 
   render() {
+    //console.log(localStorage.getItem("user_mail"));
     const { isAuthenticated } = this.props.auth;
     var userMailValue = localStorage.getItem("user_mail");
     return (

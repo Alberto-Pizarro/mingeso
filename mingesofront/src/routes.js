@@ -13,6 +13,7 @@ import Index from './Estudiante/Dashboard'
 import Problema from './Estudiante/Problema'
 import Consulta from './Estudiante/Consulta'
 import Resultados from './Estudiante/Resultados'
+import Codigo from './Estudiante/Codigo'
 
 
 const auth = new Auth();
@@ -38,6 +39,7 @@ export const makeMainRoutes = () => {
           <Route path="/Index/Problema" render={(props) => <Problema auth={auth} {...props} />} />
           <Route path="/Index/Consulta" render={(props) => <Consulta auth={auth} {...props} />} />
           <Route path="/Index/Resultados" render={(props) => <Resultados auth={auth} {...props} />} />
+          <Route path="/Index/Codigo" render={(props) => <Codigo auth={auth} {...props} />} />
 
           <Route path="/callback" render={(props) => {
             handleAuthentication(props);

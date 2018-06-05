@@ -118,7 +118,7 @@ render() {
     		        </div>
                     <div className="card-body pt-0">
                     <h5 className="card-title"> Editar enunciado </h5>
-                    <p className="card-text">Modificar enunciado o añadir nuevas posbiles entradas y salidas.</p>
+                    <p className="card-text">Modificar enunciado o añadir nuevas posbiles entradas y salidas a los enunciados en Python, Java o C.</p>
                   </div>
                 </div>
     		</div>
@@ -131,7 +131,7 @@ render() {
     		        </div>
                     <div className="card-body pt-0">
                     <h5 className="card-title"> Revisar desempeño </h5>
-                    <p className="card-text">Comprobar desempeño del curso, cantidad de problemas resueltos, logrados, etc.</p>
+                    <p className="card-text">Comprobar desempeño de los estudiantes a cargo, cantidad de problemas que han resuelto, logrados, etc.</p>
                   </div>
                 </div>
     		</div>        
@@ -140,17 +140,17 @@ render() {
         }
         {
           !isAuthenticated() && (
-              <h4>
-                You are not logged in! Please{' '}
-                <a
-                  style={{ cursor: 'pointer' }}
-                  onClick={this.login.bind(this)}
-                >
-                  Log In
-                </a>
-                {' '}to continue.
-              </h4>
-            )
+            <h4 className={"text-center lead"} >
+              Usted no ha ingresado al sistema. Favor {' '}
+              <a
+                style={{ cursor: 'pointer' }}
+                onClick={this.login.bind(this)}
+              >
+                conectarse
+              </a>
+              {' '}para continuar.
+            </h4>
+          )
         }
       </Panel>
     );

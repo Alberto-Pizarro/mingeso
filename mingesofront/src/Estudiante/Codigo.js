@@ -113,17 +113,17 @@ handleErrorValue(event){
         }
         {
           !isAuthenticated() && (
-              <h4>
-                You are not logged in! Please{' '}
-                <a
-                  style={{ cursor: 'pointer' }}
-                  onClick={this.login.bind(this)}
-                >
-                  Log In
-                </a>
-                {' '}to continue.
-              </h4>
-            )
+            <h4 className={"text-center lead"} >
+              Usted no ha ingresado al sistema. Favor {' '}
+              <a
+                style={{ cursor: 'pointer' }}
+                onClick={this.login.bind(this)}
+              >
+                conectarse
+              </a>
+              {' '}para continuar.
+            </h4>
+          )
         }
       </div>
     );

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Panel } from 'react-bootstrap';
+import { Panel, Tab, Tabs } from 'react-bootstrap';
 
 import './Dashboard.css';
 //import Axios from 'axios';
@@ -52,24 +52,26 @@ class Editar extends Component {
 
             
             
-              <div  className="well">
-                <h4>
-                  Editar enunciado:
-                </h4>
-                <div>
-                <textarea className="form-control" rows="15" id="enunciado"  value={this.state.enunciadoValue} onChange={this.handleEnunciadoValue} placeholder={"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur maximus eu dui mattis bibendum. Donec tristique enim sit amet justo fringilla fermentum. Donec eu mauris velit. Proin lorem tortor, auctor eget felis sit amet, fringilla placerat est. Vestibulum blandit lobortis nisi et egestas. Vestibulum pretium, quam ac ullamcorper pretium, massa mauris sodales ligula, ac iaculis tortor nisl vel diam. Morbi efficitur eget dui sit amet ultricies. Curabitur convallis sapien eu ligula placerat dictum. Mauris gravida nisi ac lacinia blandit. Maecenas elit orci, elementum eu dictum et, pulvinar et nunc. Duis tristique leo at metus iaculis, quis posuere orci luctus. Curabitur pulvinar sapien ac nisl viverra sollicitudin. Proin commodo velit tellus, ut pellentesque nisl tempus non. Integer at tristique mauris. Vivamus scelerisque finibus turpis, et malesuada arcu interdum eu. \n \nNunc faucibus lacus augue, vel tincidunt enim feugiat at. Suspendisse lacus lacus, pulvinar mollis lacus non, tincidunt tristique ligula. Donec eu commodo odio. Nam libero felis, ultricies eu velit vel, porta dignissim mauris. Nulla vehicula, augue id feugiat pellentesque, erat enim dapibus nisl, et tincidunt dui velit in purus. Integer sagittis varius tristique. Proin dolor odio, porttitor vitae est eu, tempus interdum tortor. Etiam tellus metus, tempor a laoreet a, egestas id neque.  "}></textarea>
-                
-                <button className="btn btn-success btn-margin" onClick={this.handleOnClickEnunciado} id="send-Enunciado"> Editar enunciado </button>
-
-                </div>
-                <label>Entrada esperada</label>
-                  <textarea className="form-control" rows="3" id="input" placeholder={"3"} value={this.state.entradaValue} onChange={this.handleEntradaValue}></textarea>
-                <label>Salida esperada</label>
-                  <textarea className="form-control" rows="3" id="output" placeholder={"9"} value={this.state.salidaValue} onChange={this.handleSalidaValue} ></textarea>
-                
-                  <button className="btn btn-success" onClick={this.handleOnSendTest} id="send-Test"> Enviar test </button>
-
-              </div>
+              
+            
+            <div className="well">
+              <Tabs defaultActiveKey={2} id="uncontrolled-tab-example">
+              <Tab eventKey={1} title="Python">
+                  Tab 1 content
+                  hola
+                  soy
+                  contenido
+                  en 
+                  python
+              </Tab>
+              <Tab eventKey={2} title="Java">
+                Tab 2 content
+              </Tab>
+              <Tab eventKey={3} title="C">
+                Tab 3 content
+              </Tab>
+            </Tabs>                         
+          </div>
             
             )
         }

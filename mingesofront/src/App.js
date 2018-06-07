@@ -21,14 +21,15 @@ class App extends Component {
     var userMailValue = localStorage.getItem("user_mail");
     return (
       <div>
-        <Navbar fluid>
-          <Navbar.Header>
-            <Navbar.Brand>
-              <a className="title" href="#">MINGESO-APP</a>
-            </Navbar.Brand>
+
 
             {
               !isAuthenticated() && (
+                <Navbar fluid>
+                <Navbar.Header>
+                  <Navbar.Brand>
+                    <a className="title" href="#">MINGESO-APP</a>
+                  </Navbar.Brand>
                 <div className="btn-group">
 
                 <Button
@@ -47,10 +48,19 @@ class App extends Component {
                     Log In
                   </Button>
                   </div>
+                  </Navbar.Header>
+
+                </Navbar>
+                  
                 )
             }
             {
               isAuthenticated() && (
+                <Navbar fluid>
+                <Navbar.Header>
+                  <Navbar.Brand>
+                    <a className="title" href="#">MINGESO-APP</a>
+                  </Navbar.Brand>
                 <div className="btn-group">
                 <Button
                   bsStyle="primary"
@@ -77,12 +87,14 @@ class App extends Component {
 
 
                 </div>
+
+                </Navbar.Header>
+                <Navbar.Link className="text-force-right"> {userMailValue} </Navbar.Link>      
+
+                </Navbar>
                 )
             }
-          </Navbar.Header>
-          <Navbar.Link className="text-force-right"> {userMailValue} </Navbar.Link>      
 
-        </Navbar>
       </div>
       
     );

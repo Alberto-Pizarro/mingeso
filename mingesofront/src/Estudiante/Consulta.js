@@ -28,6 +28,12 @@ class Resultados extends Component {
     this.setState({salidaValue: event.target.value});
   }
 
+  handleOnClickYoutube(event){
+    window.open("https://www.youtube.com/watch?v=QI8GilW7ilk&list=PLh5Gi_SEPPXOdAl06xC2_e3MjqIMcrgXV", 
+    "_blank", "toolbar=no,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400");  
+  }
+
+
   render() {
     const { isAuthenticated } = this.props.auth;
     return (
@@ -47,6 +53,7 @@ class Resultados extends Component {
                
               </div>
               <button className="btn btn-success btn-lg" onClick={this.handleOnClick} id="send-button"> SEND </button>
+              <button className="btn btn-danger btn-lg btn-right" onClick={this.handleOnClickYoutube} id="youtube-button" > Ir a youtube </button>
 
               </div>
 

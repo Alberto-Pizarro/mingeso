@@ -48,14 +48,10 @@ class Editar extends Component {
     return (
       <Panel className="container">
         {
-          isAuthenticated() && (
-
-            
-            
-              
-            
+          
+          isAuthenticated() && (           
             <div className="well">
-              <Tabs defaultActiveKey={2} id="uncontrolled-tab-example">
+            <Tabs defaultActiveKey={1} id="tab">
               <Tab eventKey={1} title="Python">
                   Tab 1 content
                   hola

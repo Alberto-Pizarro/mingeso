@@ -16,23 +16,28 @@ class Problema extends Component {
 
 
 
+goTo(route) {
+  this.props.history.replace(`/${route}`)
+}
+
+
   render() {
     const { isAuthenticated } = this.props.auth;
     return (
       <Panel className="container">
         {
           isAuthenticated() && (
-
+            <div>
+            <button className="btn btn-danger btn-lg btn-right" onClick={this.goTo.bind(this, 'Index/Codigo')} id="codigo-button" > Hacer codigo </button>
             
             <div className="well">
-            <Tabs defaultActiveKey={2} id="uncontrolled-tab-example">
+            <Tabs defaultActiveKey={1} id="tab">
             <Tab eventKey={1} title="Python">
-                Tab 1 content
-                hola
-                soy
-                contenido
-                en 
-                python
+            <div className="list-group list-group-flush">
+              <a href="#" data-toggle="tooltip" title="Problema fácil" className="list-group-item">Suma de enteros</a>
+              <a href="#" data-toggle="tooltip" title="Problema normal!" className="list-group-item">Conversión de string</a>
+              <a href="#" data-toggle="tooltip" title="Problema difícil!" className="list-group-item">Buscaminas</a>
+            </div> 
             </Tab>
             <Tab eventKey={2} title="Java">
               Tab 2 content
@@ -41,7 +46,8 @@ class Problema extends Component {
               Tab 3 content
             </Tab>
           </Tabs>
-                         
+          
+          </div>             
           </div>
 
             

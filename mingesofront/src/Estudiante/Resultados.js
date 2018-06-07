@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Panel } from 'react-bootstrap';
+import { Panel,Tab, Tabs } from 'react-bootstrap';
 //import Axios from 'axios';
 
 class Resultados extends Component {
@@ -49,16 +49,25 @@ class Resultados extends Component {
 
             
             
-              <div className="well">
-                <h4>
-                  Consultar notas y desempeño:
-                </h4>
-                <div>
-                <textarea className="form-control" rows="15" id="enunciado" value={this.state.enunciadoValue} onChange={this.handleEnunciadoValue}></textarea>
-                
-               
-              </div>
-              </div>
+            <div className="well">
+            <Tabs defaultActiveKey={1} id="tab">
+            <Tab eventKey={1} title="Python">
+                Tab 1 content
+                hola
+                soy
+                contenido
+                en 
+                python
+            </Tab>
+            <Tab eventKey={2} title="Java">
+              Tab 2 content
+            </Tab>
+            <Tab eventKey={3} title="C">
+              Tab 3 content
+            </Tab>
+          </Tabs>
+                         
+          </div>
 
             )
         }

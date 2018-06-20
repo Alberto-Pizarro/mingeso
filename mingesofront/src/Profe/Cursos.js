@@ -1,44 +1,49 @@
 import React, { Component } from 'react';
-import { Panel,Tab, Tabs } from 'react-bootstrap';
-//import Axios from 'axios';
+import { Panel } from 'react-bootstrap';
+import Axios from 'axios';
 
 class Cursos extends Component {
 
 
-  constructor (props){
-    super(props);
   
-    this.state = {
-    enunciadoValue:"",
-    entradaValue:"",
-    salidaValue:""
+
+  state = {
+    nombres: [],
+    tiempo: [] ,
+    wordings: [] ,
   };
-  this.handleEnunciadoValue = this.handleEnunciadoValue.bind(this);
-  this.handleEntradaValue = this.handleEntradaValue.bind(this);
-  this.handleSalidaValue = this.handleSalidaValue.bind(this);
- }
 
 
   login() {
     this.props.auth.login();
   }
 
+  fetchLista(){
+    Axios.get('http://localhost:1919/student/all')
+    .then(response => {
+      console.log("respuesta al get");
+      //console.log(this.list);
+      //console.log(response);
+      //var userMailValue = localStorage.getItem("user_mail");
+      for(var estudiante of response.data){
+        //console.log(estudiante);
+          this.setState({nombres: this.state.nombres+estudiante.name});
+          this.setState({tiempo: this.state.tiempo+estudiante.total_spend_time});
+          this.setState({wordings: this.state.wordings+estudiante.total_wordings});
+        
+      }
+    })
+    .catch(function (error) {
+      console.log("ErroR!!!!")
+      console.log(error)
+    })
+  }
+  
+  componentDidMount(){
+    console.log("did mount?")
+    this.fetchLista()
+  }
 
-  handleEnunciadoValue(event){
-    this.setState({enunciadoValue: event.target.value});
-  }
-  handleEntradaValue(event){
-    this.setState({entradaValue: event.target.value});
-  }
-  handleSalidaValue(event){
-    this.setState({salidaValue: event.target.value});
-  }
-  handleOnClickEnunciado(event){
-    this.setState({salidaValue: event.target.value});
-  }
-  handleOnSendTest(event){
-    this.setState({salidaValue: event.target.value});
-  }
 
   render() {
     const { isAuthenticated } = this.props.auth;
@@ -50,24 +55,20 @@ class Cursos extends Component {
             
             
             <div className="well">
-            <Tabs defaultActiveKey={1} id="tab">
-            <Tab eventKey={1} title="Python">
-                Tab 1 content
-                hola
-                soy
-                contenido
-                en 
-                python
-            </Tab>
-            <Tab eventKey={2} title="Java">
-              Tab 2 content
-            </Tab>
-            <Tab eventKey={3} title="C">
-              Tab 3 content
-            </Tab>
-          </Tabs>
-                         
-          </div>
+            <h2>
+              Desempeños
+              </h2>
+              <div>
+            Alumnos: {this.state.nombres} 
+              </div>
+            
+            <div>
+            Tiempo en la plataforma: {this.state.tiempo} 
+              </div>
+              <div>
+              Wordings: {this.state.wordings}
+              </div>       
+            </div>
 
             )
         }

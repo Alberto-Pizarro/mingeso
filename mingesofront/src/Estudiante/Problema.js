@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Panel,Tab, Tabs } from 'react-bootstrap';
-//import Axios from 'axios';
+import Axios from 'axios';
+import Listador from './../Listador/Listador'
 import './Dashboard.css';
 
 
@@ -8,13 +9,30 @@ class Problema extends Component {
 
 
 
+  state = {
+    loading: true,
+    list: [],
+  };
 
-  handleOnClick = event =>{
-    console.log(event)
-    
+
+fetchLista(){
+  Axios.get('http://localhost:1919/exercise/all')
+  .then(response => {
+    console.log("respuesta al get")
+    this.setState({list:response.data});
+    //console.log(this.list);
+
+  })
+  .catch(function (error) {
+    console.log("ErroR!!!!")
+    console.log(error)
+  })
 }
 
-
+componentDidMount(){
+  console.log("did mount?")
+  this.fetchLista()
+}
 
 goTo(route) {
   this.props.history.replace(`/${route}`)
@@ -28,15 +46,15 @@ goTo(route) {
         {
           isAuthenticated() && (
             <div>
-            <button className="btn btn-danger btn-lg btn-right" onClick={this.goTo.bind(this, 'Index/Codigo')} id="codigo-button" > Hacer codigo </button>
+              
+            <button className="btn btn-danger btn-lg btn-top-margin btn-right-margin btn-right" onClick={this.goTo.bind(this, 'Index/Codigo')} id="codigo-button" > Hacer codigo </button>
             
             <div className="well">
             <Tabs defaultActiveKey={1} id="tab">
             <Tab eventKey={1} title="Python">
             <div className="list-group list-group-flush">
-              <a href="#" data-toggle="tooltip" title="Problema fácil" className="list-group-item">Suma de enteros</a>
-              <a href="#" data-toggle="tooltip" title="Problema normal!" className="list-group-item">Conversión de string</a>
-              <a href="#" data-toggle="tooltip" title="Problema difícil!" className="list-group-item">Buscaminas</a>
+              <Listador list={this.state.list} />
+
             </div> 
             </Tab>
             <Tab eventKey={2} title="Java">

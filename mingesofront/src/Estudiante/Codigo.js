@@ -58,7 +58,15 @@ handleErrorValue(event){
     }).then(function (response) {
         console.log("response:");
         console.log(response.data.output);
-        self.setState({outputValue: response.data.output});
+        var str = '';
+          for(var respuesta of response.data.output){
+            str = str + '\n' + respuesta;
+          }
+        
+          str = str.substring(1);
+         // console.log(str);
+        self.setState({outputValue: str});
+
         self.setState({errorValue: response.data.error[0]});
       }).catch(function (error) {
         console.log("error:");
@@ -93,7 +101,7 @@ handleErrorValue(event){
                          
                 
                 <label>OUTPUT</label>
-                  <textarea className="form-control" rows="1" id="output" value={this.state.outputValue} onChange={this.handleOutputValue} ></textarea>
+                  <textarea className="form-control" rows="5" id="output" value={this.state.outputValue} onChange={this.handleOutputValue} ></textarea>
                 <label>ERROR</label>
                   <textarea className="form-control" rows="1" id="error" value={this.state.errorValue} onChange={this.handleErrorValue} ></textarea> 
                 <button className="btn btn-success btn-lg" onClick={this.handleOnClick} id="send-button"> SEND </button>

@@ -10,7 +10,7 @@ class ListElement extends Component {
 fetchElement(id){
     //console.log("fetcheando");
     //console.log(id);
-    Axios.get('http://localhost:1919/exercises/'+id)
+    Axios.get('http://localhost:8090/exercises/'+id)
     .then(response => {
       console.log("respuesta al get")
       //this.setState({list:response.data});

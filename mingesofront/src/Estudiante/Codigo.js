@@ -12,7 +12,10 @@ class Codigo extends Component {
       codigoValue: "",
       inputValue:"",
       outputValue:"",
-      errorValue:""
+      errorValue:"",
+      showInfo:"none",
+      infoValue:"",
+      lenguajeValue:"Python"
   };
 
   this.handleCodigoValue = this.handleCodigoValue.bind(this);
@@ -20,6 +23,7 @@ class Codigo extends Component {
   this.handleOutputValue = this.handleOutputValue.bind(this);
   this.handleErrorValue = this.handleErrorValue.bind(this);
   this.handleOnClick = this.handleOnClick.bind(this);
+  this.handleLenguajeValue = this.handleLenguajeValue.bind(this);
 }
 
 handleCodigoValue(event){
@@ -34,6 +38,9 @@ handleOutputValue(event){
 handleErrorValue(event){
   this.setState({errorValue: event.target.value});
 }
+handleLenguajeValue(event){
+  this.setState({lenguajeValue:event.target.value});
+}
 
   login() {
     this.props.auth.login();
@@ -42,12 +49,13 @@ handleErrorValue(event){
 
   handleOnClick = event =>{
     var self=this;
-    console.log("codigo mandado:");
-    console.log(this.state.codigoValue);
+    //console.log("codigo mandado:");
+    //console.log(this.state.codigoValue);
     this.setState({outputValue: ''});
     this.setState({errorValue: ''});
-
-    Axios.post('http://localhost:1919/code',{
+    console.log(this.state.lenguajeValue);
+    Axios.post('http://localhost:1515/code',{
+      lang: this.state.lenguajeValue,
       code: this.state.codigoValue,
       },
       {
@@ -57,7 +65,7 @@ handleErrorValue(event){
       json: true
     }).then(function (response) {
         console.log("response:");
-        console.log(response.data.output);
+        console.log(response);
         var str = '';
           for(var respuesta of response.data.output){
             str = str + '\n' + respuesta;
@@ -66,12 +74,30 @@ handleErrorValue(event){
           str = str.substring(1);
          // console.log(str);
         self.setState({outputValue: str});
-
         self.setState({errorValue: response.data.error[0]});
+        
       }).catch(function (error) {
         console.log("error:");
         console.log(error);
       });
+      Axios.post('http://localhost:1515/checkCode',{
+      lang: this.state.lenguajeValue,
+      code: this.state.codigoValue,
+      },
+      {
+      headers:{ 
+        'Content-Type': 'application/json'
+      },
+      json: true
+    }).then(function (response) {
+      console.log("response al check:");
+      console.log(response);
+      self.setState({showInfo:"block"});
+      self.setState({infoValue:'' + response.data.body + "\r\n" + response.data.coments + "\r\n" + response.data.identation });      
+    }).catch(function (error) {
+      console.log("error:");
+      console.log(error);
+    });
 }
 
 
@@ -86,14 +112,18 @@ handleErrorValue(event){
             
 
               <div className="well">
+                <div id="infoPop" style={{display:this.state.showInfo}} className="alert alert-info" role="alert">
+                  <p>{this.state.infoValue} </p>
+                </div>
+
                 <label>CODE</label>
                 <div className="code-group">
                 <div className="form-group">
                     <label >Seleccione lenguaje:</label>
-                    <select className="form-control" id="sel1">
-                      <option>Python</option>
-                      <option>C</option>
-                      <option>Java</option>                      
+                    <select onChange={this.handleLenguajeValue} className="form-control" id="sel1">
+                      <option value="Python">Python</option>
+                      <option value="C">C</option>
+                      <option value="Java">Java</option>                      
                     </select>
                   </div> 
                   <textarea className="form-control" rows="15" id="code" onChange={this.handleCodigoValue}></textarea>                

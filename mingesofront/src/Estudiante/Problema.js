@@ -16,7 +16,7 @@ class Problema extends Component {
 
 
 fetchLista(){
-  Axios.get('http://localhost:1919/exercise/all')
+  Axios.get('http://localhost:8090/exercise/all')
   .then(response => {
     console.log("respuesta al get")
     this.setState({list:response.data});

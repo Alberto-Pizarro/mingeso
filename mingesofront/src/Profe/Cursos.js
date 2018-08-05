@@ -19,7 +19,7 @@ class Cursos extends Component {
   }
 
   fetchLista(){
-    Axios.get('http://localhost:1919/student/all')
+    Axios.get('http://localhost:8090/student/all')
     .then(response => {
       console.log("respuesta al get");
       //console.log(this.list);

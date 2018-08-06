@@ -46,7 +46,10 @@ goTo(route) {
         {
           isAuthenticated() && (
             <div>
+            
               
+            <label>{localStorage.getItem("nombre_enunciado")} </label>
+            <div>
             <button className="btn btn-danger btn-lg btn-top-margin btn-right-margin btn-right" onClick={this.goTo.bind(this, 'Index/Codigo')} id="codigo-button" > Hacer codigo </button>
             
             <div className="well">
@@ -58,13 +61,19 @@ goTo(route) {
             </div> 
             </Tab>
             <Tab eventKey={2} title="Java">
-              Tab 2 content
+            <div className="list-group list-group-flush">
+              <Listador list={this.state.list} />
+
+            </div> 
             </Tab>
             <Tab eventKey={3} title="C">
-              Tab 3 content
+            <div className="list-group list-group-flush">
+              <Listador list={this.state.list} />
+
+            </div> 
             </Tab>
           </Tabs>
-          
+          </div> 
           </div>             
           </div>
 

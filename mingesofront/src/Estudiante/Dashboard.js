@@ -80,6 +80,7 @@ handleErrorValue(event){
 
 
 goTo(route) {
+  localStorage.setItem("expected_answer","");
   this.props.history.replace(`/${route}`)
 }
 

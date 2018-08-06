@@ -6,7 +6,8 @@ class Listador extends Component {
   buildList(){
     return this.props.list.map((listElement) => {
       return(
-        <ListElement 
+        <ListElement
+        key={listElement.id_exercise} 
         id={listElement.id_exercise} 
         title={listElement.title} 
         texto={listElement.text} 

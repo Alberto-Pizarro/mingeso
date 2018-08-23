@@ -52,8 +52,8 @@ class Resultados extends Component {
                 
                
               </div>
-              <button className="btn btn-success btn-lg" onClick={this.handleOnClick} id="send-button"> SEND </button>
-              <button className="btn btn-danger btn-lg btn-right" onClick={this.handleOnClickYoutube} id="youtube-button" > Ir a youtube </button>
+              <button style={{margin:"5px 0 0 0"}} className="btn btn-success btn-lg" onClick={this.handleOnClick} id="send-button"> SEND </button>
+              <button style={{margin:"5px 0 0 0"}} className="btn btn-danger btn-lg btn-right" onClick={this.handleOnClickYoutube} id="youtube-button" > Ir a youtube </button>
 
               </div>
 

@@ -14,7 +14,7 @@ class Codigo extends Component {
       outputValue:"",
       errorValue:"",
       showInfo:"none",
-      infoValue:"",
+      infoValue:[] ,
       showCalification:"none",
       calificationValue:"",
       lenguajeValue:"Python"
@@ -108,7 +108,10 @@ handleLenguajeValue(event){
       console.log("response al check:");
       console.log(response);
       self.setState({showInfo:"block"});
-      self.setState({infoValue:'' + response.data.body + '---' + response.data.coments + '---' + response.data.identation });      
+      //self.setState({infoValue:'' + response.data.body + '---' + response.data.coments + '---' + response.data.identation });      
+      self.state.infoValue.push(">"+response.data.body);
+      self.state.infoValue.push(">"+response.data.coments);
+      self.state.infoValue.push(">"+response.data.identation);
     }).catch(function (error) {
       console.log("error:");
       console.log(error);
@@ -128,7 +131,9 @@ handleLenguajeValue(event){
 
               <div className="well">
                 <div id="infoPop" style={{display:this.state.showInfo}} className="alert alert-info" role="alert">
-                  <p>{this.state.infoValue} </p>
+                  <p>{this.state.infoValue[0]} </p>
+                  <p>{this.state.infoValue[1]} </p>
+                  <p>{this.state.infoValue[2]} </p>
                 </div>
                 <div id="warningPop" style={{display:this.state.showCalification}} className="alert alert-warning" role="alert">
                   <p>{this.state.calificationValue} </p>

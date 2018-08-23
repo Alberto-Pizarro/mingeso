@@ -20,7 +20,7 @@ fetchLista(){
   .then(response => {
     console.log("respuesta al get")
     this.setState({list:response.data});
-    //console.log(this.list);
+    console.log(response);
 
   })
   .catch(function (error) {
@@ -48,7 +48,6 @@ goTo(route) {
             <div>
             
               
-            <label>{localStorage.getItem("nombre_enunciado")} </label>
             <div>
             <button className="btn btn-danger btn-lg btn-top-margin btn-right-margin btn-right" onClick={this.goTo.bind(this, 'Index/Codigo')} id="codigo-button" > Hacer codigo </button>
             

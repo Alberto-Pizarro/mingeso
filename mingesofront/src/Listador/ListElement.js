@@ -18,11 +18,13 @@ fetchElement(id){
       //localStorage.setItem('id_enunciado', id);
       //localStorage.setItem('nombre_enunciado', response.data.title);
       var myWindow = window.open("", "", "width=800,height=600");
-      myWindow.document.write("<div>Nombre del Problema: "+response.data.title+"\n</div>");
-      myWindow.document.write("<p>"+response.data.text+"\n</p>");
-      myWindow.document.write("<p>------------"+"\n</p>");
-      myWindow.document.write("<div>Solución esperada: "+"\n</div>");
-      myWindow.document.write(response.data.answer);
+      myWindow.document.write("<div style=\"background-color:#f5f5f5;margin:10px;height:80vh\">");
+      myWindow.document.write("<div style=\"background-color:powderblue;border-bottom: 3px solid #3DB7B7;\" > Nombre del Problema: "+response.data.title+"\n</div>");
+      myWindow.document.write("<p   style=\"margin:10px\">"+response.data.text+"\n</p>");
+      myWindow.document.write("<div style=\"border-bottom: 2px solid #4d4d4d;\" ></div>");
+      myWindow.document.write("<div style=\"background-color:#F8A500;border-bottom: 3px solid #BC7D00;\" >Solución esperada: "+"\n</div>");
+      //myWindow.document.write("</div>");
+      myWindow.document.write("<div style=\"margin:10px\">"+response.data.answer+"</div>");
       
 
     })
@@ -50,8 +52,8 @@ fetchElement(id){
 data-toggle="tooltip" 
 title="" 
 className="list-group-item">{this.props.title} 
-<Button className="button btn-right btn-info btn-xs" onClick={()=>this.fetchElement(this.props.id)} > Ver </Button>
-<Button className="button btn-right btn-danger btn-xs btn-right-margin btn-right" onClick={()=>this.setEnunciado(this.props.id)} id="codigo-button" > Escoger para resolver </Button>
+<Button style={{color:"#1d1d1d"}} className="button btn-right btn-info btn-xs" onClick={()=>this.fetchElement(this.props.id)} > Ver </Button>
+<Button style={{color:"#1d1d1d"}} className="button btn-right btn-warning btn-xs btn-right-margin btn-right" onClick={()=>this.setEnunciado(this.props.id)} id="codigo-button" > Escoger para resolver </Button>
 
 </a>
 

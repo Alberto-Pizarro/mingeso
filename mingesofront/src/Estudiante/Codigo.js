@@ -138,7 +138,7 @@ handleLenguajeValue(event){
                 <div id="warningPop" style={{display:this.state.showCalification}} className="alert alert-warning" role="alert">
                   <p>{this.state.calificationValue} </p>
                 </div>
-                <label>CODE</label>
+                <label>Resolviendo:</label> <label style={{"fontWeight":500}} > {localStorage.getItem("selected_name")}</label>
                 <div className="code-group">
                 <div className="form-group">
                     <label >Seleccione lenguaje:</label>
@@ -156,7 +156,7 @@ handleLenguajeValue(event){
                   <textarea className="form-control" rows="5" id="output" value={this.state.outputValue} onChange={this.handleOutputValue} ></textarea>
                 <label>ERROR</label>
                   <textarea className="form-control" rows="1" id="error" value={this.state.errorValue} onChange={this.handleErrorValue} ></textarea> 
-                <button className="btn btn-success btn-lg" onClick={this.handleOnClick} id="send-button"> SEND </button>
+                <button style={{margin:"5px 0 0 0"}} className="btn btn-success btn-lg" onClick={this.handleOnClick} id="send-button"> SEND </button>
 
               </div>
             

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Panel } from 'react-bootstrap';
+import { Panel,Table } from 'react-bootstrap';
 import Axios from 'axios';
+import Tabla from './../Tabla/Tabla';
 
 class Cursos extends Component {
 
@@ -9,8 +10,10 @@ class Cursos extends Component {
 
   state = {
     nombres: [],
+    apellidos: [],
     tiempo: [] ,
     wordings: [] ,
+    list:[],
   };
 
 
@@ -21,17 +24,19 @@ class Cursos extends Component {
   fetchLista(){
     Axios.get('http://localhost:8090/student/all')
     .then(response => {
+      //var self=this;
       console.log("respuesta al get");
       //console.log(this.list);
-      //console.log(response);
+      console.log(response);
       //var userMailValue = localStorage.getItem("user_mail");
-      for(var estudiante of response.data){
+      /*for(var estudiante of response.data){
         //console.log(estudiante);
-          this.setState({nombres: this.state.nombres+estudiante.name});
-          this.setState({tiempo: this.state.tiempo+estudiante.total_spend_time});
-          this.setState({wordings: this.state.wordings+estudiante.total_wordings});
-        
-      }
+          this.state.nombres.push(estudiante.name);
+          this.state.apellidos.push(estudiante.lastName);
+          this.state.tiempo.push(estudiante.total_spend_time);
+          this.state.wordings.push(estudiante.total_wordings);        
+      }*/
+      this.setState({list: response.data});
     })
     .catch(function (error) {
       console.log("ErroR!!!!")
@@ -55,19 +60,9 @@ class Cursos extends Component {
             
             
             <div className="well">
-            <h2>
-              Desempeños
-              </h2>
-              <div>
-            Alumnos: {this.state.nombres} 
-              </div>
-            
-            <div>
-            Tiempo en la plataforma: {this.state.tiempo} 
-              </div>
-              <div>
-              Wordings: {this.state.wordings}
-              </div>       
+            <Table bordered condensed hover>
+              <Tabla list={this.state.list} />
+              </Table>    
             </div>
 
             )

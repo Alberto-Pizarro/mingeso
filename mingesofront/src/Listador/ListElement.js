@@ -22,7 +22,7 @@ fetchElement(id){
       myWindow.document.write("<div style=\"background-color:powderblue;border-bottom: 3px solid #3DB7B7;\" > Nombre del Problema: "+response.data.title+"\n</div>");
       myWindow.document.write("<p   style=\"margin:10px\">"+response.data.text+"\n</p>");
       myWindow.document.write("<div style=\"border-bottom: 2px solid #4d4d4d;\" ></div>");
-      myWindow.document.write("<div style=\"background-color:#F8A500;border-bottom: 3px solid #BC7D00;\" >Solución esperada: "+"\n</div>");
+      myWindow.document.write("<div style=\"background-color:#F8A500;border-bottom: 3px solid #BC7D00;\" >Solución esperada: \n</div>");
       //myWindow.document.write("</div>");
       myWindow.document.write("<div style=\"margin:10px\">"+response.data.answer+"</div>");
       
@@ -39,8 +39,7 @@ fetchElement(id){
     Axios.get('http://localhost:8090/exercises/'+id)
     .then(response => {
       localStorage.setItem("expected_answer",response.data.answer);
-      
-
+      localStorage.setItem("selected_name",response.data.title);
     })
   }
 

@@ -40,11 +40,13 @@ export default class Auth {
 
   setSession(authResult) {
     // Set the time that the access token will expire at
-    let expiresAt = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
+    console.log(authResult.expiresIn)
+    let expiresAt = JSON.stringify((authResult.expiresIn * 500) + new Date().getTime());
     localStorage.setItem('access_token', authResult.accessToken);
     localStorage.setItem('id_token', authResult.idToken);
     localStorage.setItem('expires_at', expiresAt);
     localStorage.setItem('name',authResult.idTokenPayload.name);
+    localStorage.setItem('first_name',authResult.idTokenPayload.given_name)
     localStorage.setItem('user_mail',authResult.idTokenPayload.email);
     // navigate to the index route
     history.replace('/index');
@@ -68,3 +70,38 @@ export default class Auth {
     return new Date().getTime() < expiresAt;
   }
 }
+
+
+
+
+/*
+
+  handleAuthentication() {
+    this.auth0.parseHash((err, authResult) => {
+      if (authResult && authResult.accessToken && authResult.idToken) {
+        console.log(authResult.idTokenPayload.email)
+        Axios.get('localhost:8090/student/validate?email='+authResult.idTokenPayload.email)
+        .then(response => {
+          console.log(response)
+          if(response===0){
+            this.setSession(authResult);
+            console.log(authResult.idTokenPayload);
+            console.log(authResult.idTokenPayload.email);
+            history.replace('/index');
+          }
+        })
+        .catch(function (error) {
+          console.log("ErroR!!! Usuario no registrado")
+          console.log(error)
+          history.replace('/index');
+          alert(`Error: ${err.error}. Check the console for further details.`);
+        })
+      } else if (err) {
+        history.replace('/index');
+        console.log(err);
+        alert(`Error: ${err.error}. Check the console for further details.`);
+      }
+    });
+  }
+
+  */

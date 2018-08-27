@@ -60,7 +60,7 @@ class Resultados extends Component {
             Tiempo en la plataforma: {this.state.tiempo} 
               </div>
               <div>
-              Wordings: {this.state.wordings}
+              Enunciados resueltos: {this.state.wordings}
               </div>       
             </div>
 

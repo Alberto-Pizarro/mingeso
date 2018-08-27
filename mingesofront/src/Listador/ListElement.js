@@ -39,11 +39,11 @@ fetchElement(id){
     Axios.get('http://localhost:8090/exercises/'+id)
     .then(response => {
       localStorage.setItem("expected_answer1",response.data.answer1);
-      localStorage.setItem("expected_answer2",response.data.answer1);
-      localStorage.setItem("expected_answer3",response.data.answer1);
-      localStorage.setItem("params_answer1",response.data.answer1);
-      localStorage.setItem("params_answer2",response.data.answer2);
-      localStorage.setItem("params_answer3",response.data.answer3);
+      localStorage.setItem("expected_answer2",response.data.answer2);
+      localStorage.setItem("expected_answer3",response.data.answer3);
+      localStorage.setItem("params_answer1",response.data.param1);
+      localStorage.setItem("params_answer2",response.data.param2);
+      localStorage.setItem("params_answer3",response.data.param3);
       localStorage.setItem("selected_name",response.data.title);
     })
   }

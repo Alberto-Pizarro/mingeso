@@ -80,7 +80,7 @@ handleErrorValue(event){
 
 
 goTo(route) {
-  localStorage.setItem("expected_answer","");
+  localStorage.setItem("expected_answer1","");
   localStorage.setItem("selected_name","ningún enunciado seleccionado. Modo libre");
   this.props.history.replace(`/${route}`)
 }

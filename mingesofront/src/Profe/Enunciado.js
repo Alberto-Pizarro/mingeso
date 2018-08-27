@@ -108,9 +108,10 @@ class Enunciado extends Component {
         mm = '0'+mm
     } 
 
-    today = dd + '-' + mm + '-' + yyyy;
+    today = yyyy  + '-' + mm + '-' + dd;
     //document.write(today);
     //return
+    console.log(today.toString);
     Axios.post('http://localhost:8090/exercise/new',{
       text: this.state.enunciadoValue,
       title: this.state.tituloValue,
@@ -121,7 +122,7 @@ class Enunciado extends Component {
       param2: this.state.entradaValue2,
       param3: this.state.entradaValue3,
       published:"True",
-      exercise_initial_date: today
+      //exercise_initial_date: today  // no funciona y ni idea como
       },
       {
       headers:{ 
@@ -153,7 +154,7 @@ class Enunciado extends Component {
               
             
               <div className="well">
-                 <div id="infoPop" style={{display:this.state.showInfo}} className="alert alert-primary" role="alert">
+                 <div id="infoPop" style={{display:this.state.showInfo}} className="alert alert-info" role="alert">
                   <p>{this.state.infoValue} </p>
                 </div>
 

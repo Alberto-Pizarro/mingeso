@@ -55,12 +55,23 @@ handleLenguajeValue(event){
     //console.log(this.state.codigoValue);
     this.setState({outputValue: ''});
     this.setState({errorValue: ''});
-    var ap1 = localStorage.getItem("params_answer1")
-    var ap2 = localStorage.getItem("params_answer2")
-    var ap3 = localStorage.getItem("params_answer3")
-    localStorage.getItem("expected_answer1")
+    let ap1 = localStorage.getItem("params_answer1")
+    let ap2 = localStorage.getItem("params_answer2")
+    let ap3 = localStorage.getItem("params_answer3")
+    var outt = localStorage.getItem("expected_answer1")
     console.log(this.state.lenguajeValue);
-    Axios.post('http://localhost:1515/code',{
+
+    var url='http://localhost:1515/checkCode'
+    if(outt===""){
+      url='http://localhost:1515/code'
+    }
+    url='http://localhost:1515/code'
+
+    console.log(ap1)
+    console.log(ap2)
+    console.log(ap3)
+
+    Axios.post(url,{
       lang: this.state.lenguajeValue,
       code: this.state.codigoValue,
       p1: ap1,
@@ -77,16 +88,16 @@ handleLenguajeValue(event){
         console.log("response:");
         console.log(response);
         var str = '';
-          for(var respuesta of response.data.output){
-            str = str + '\n' + respuesta;
-          }
+        for(var respuesta of response.data.output){
+          str = str + '\n' + respuesta;
+        }
         
           str = str.substring(1);
          // console.log(str);
         self.setState({outputValue: str});
         self.setState({errorValue: response.data.error[0]});
         //console.log(localStorage.getItem("expected_answer")); 
-        if(str===localStorage.getItem("expected_answer1")){
+        if((response.data.p1===localStorage.getItem("expected_answer1"))&&(response.data.p2===localStorage.getItem("expected_answer2"))&&(response.data.p3===localStorage.getItem("expected_answer3"))){
           self.setState({calificationValue:"¡Respuesta correcta!"});
           self.setState({showCalification:"block"});
           //console.log("bien")
@@ -115,17 +126,38 @@ handleLenguajeValue(event){
     }).then(function (response) {
       console.log("response al check:");
       console.log(response);
-      self.setState({showInfo:"block"});
+      
       //self.setState({infoValue:'' + response.data.body + '---' + response.data.coments + '---' + response.data.identation });      
       self.state.infoValue.push(">"+response.data.body);
       self.state.infoValue.push(">"+response.data.coments);
       self.state.infoValue.push(">"+response.data.identation);
+      self.setState({showInfo:"block"});
     }).catch(function (error) {
       console.log("error:");
       console.log(error);
     });
+
+    this.giveTime();
 }
 
+
+  giveTime(){
+    var userMailValue = localStorage.getItem("user_mail");
+    //console.log('localhost:8090/student/email?email='+userMailValue)
+    Axios.get('http://localhost:8090/student/email?email='+userMailValue)  
+    .then(response => {
+      console.log("respuesta al get3")
+      console.log(response);
+      let std_id=response.data.student_id;
+      let std_name=localStorage.getItem("first_name")
+      //console.log('http://localhost:8090/student/update?id='+std_id+'&studentName='+std_name+'&studentTime=1')
+      Axios.put('http://localhost:8090/student/update?id='+std_id+'&studentName='+std_name+'&studentTime=1')
+    })
+    .catch(function (error) {
+      console.log("ErroR!!!!3")
+      console.log(error)
+    });
+  }
 
 
   render() {

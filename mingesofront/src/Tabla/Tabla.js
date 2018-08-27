@@ -7,11 +7,11 @@ class Tabla extends Component {
     let numeral =0;
     
     return this.props.list.map((listElement) => {
-        numeral=numeral+1;
+        numeral+=1;
       return(
         <tr key={listElement.student_id} >
-            <td style={{"font-weight": "bold"}}>{numeral}</td>
-            <td style={{"font-style": "italic"}} > {listElement.name} {listElement.lastName} </td>  
+            <td style={{fontWeight: "bold"}}>{numeral}</td>
+            <td style={{fontStyle: "italic"}} > {listElement.name} {listElement.lastName} </td>  
             <td> {listElement.total_spend_time} </td>  
             <td> {listElement.total_wordings}</td>  
         </tr>

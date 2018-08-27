@@ -22,11 +22,11 @@ fetchElement(id){
       myWindow.document.write("<div style=\"background-color:powderblue;border-bottom: 3px solid #3DB7B7;\" > Nombre del Problema: "+response.data.title+"\n</div>");
       myWindow.document.write("<p   style=\"margin:10px\">"+response.data.text+"\n</p>");
       myWindow.document.write("<div style=\"border-bottom: 2px solid #4d4d4d;\" ></div>");
-      myWindow.document.write("<div style=\"background-color:#F8A500;border-bottom: 3px solid #BC7D00;\" >Solución esperada: \n</div>");
+      myWindow.document.write("<div style=\"background-color:#F8A500;border-bottom: 3px solid #BC7D00;\" > Ejemplo: \n</div>");
       //myWindow.document.write("</div>");
-      myWindow.document.write("<div style=\"margin:10px\">"+response.data.answer+"</div>");
-      
-
+      //myWindow.document.write("<div style=\"margin:10px\">Entradas: "+response.data.param1+"  ||  Salida: "+response.data.answer1+"</div>");
+      //myWindow.document.write("<div style=\"margin:10px\">Entradas: "+response.data.param2+"  ||  Salida: "+response.data.answer2+"</div>");
+      myWindow.document.write("<div style=\"margin:10px\">Entradas: "+response.data.param3+"  ||  Salida: "+response.data.answer3+"</div>");
     })
     .catch(function (error) {
       console.log("ErroR!!!!")
@@ -38,7 +38,12 @@ fetchElement(id){
     //console.log(this.props.id);
     Axios.get('http://localhost:8090/exercises/'+id)
     .then(response => {
-      localStorage.setItem("expected_answer",response.data.answer);
+      localStorage.setItem("expected_answer1",response.data.answer1);
+      localStorage.setItem("expected_answer2",response.data.answer1);
+      localStorage.setItem("expected_answer3",response.data.answer1);
+      localStorage.setItem("params_answer1",response.data.answer1);
+      localStorage.setItem("params_answer2",response.data.answer2);
+      localStorage.setItem("params_answer3",response.data.answer3);
       localStorage.setItem("selected_name",response.data.title);
     })
   }

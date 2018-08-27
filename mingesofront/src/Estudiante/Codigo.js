@@ -55,10 +55,18 @@ handleLenguajeValue(event){
     //console.log(this.state.codigoValue);
     this.setState({outputValue: ''});
     this.setState({errorValue: ''});
+    var ap1 = localStorage.getItem("params_answer1")
+    var ap2 = localStorage.getItem("params_answer2")
+    var ap3 = localStorage.getItem("params_answer3")
+    localStorage.getItem("expected_answer1")
     console.log(this.state.lenguajeValue);
     Axios.post('http://localhost:1515/code',{
       lang: this.state.lenguajeValue,
       code: this.state.codigoValue,
+      p1: ap1,
+      p2: ap2,
+      p3: ap3,
+      function: "funcion"
       },
       {
       headers:{ 
@@ -77,8 +85,8 @@ handleLenguajeValue(event){
          // console.log(str);
         self.setState({outputValue: str});
         self.setState({errorValue: response.data.error[0]});
-        console.log(localStorage.getItem("expected_answer")); 
-        if(str===localStorage.getItem("expected_answer")){
+        //console.log(localStorage.getItem("expected_answer")); 
+        if(str===localStorage.getItem("expected_answer1")){
           self.setState({calificationValue:"¡Respuesta correcta!"});
           self.setState({showCalification:"block"});
           //console.log("bien")
